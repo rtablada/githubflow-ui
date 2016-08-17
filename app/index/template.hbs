@@ -1,91 +1,59 @@
-<main>
-  {{#bulma-hero isInfo=true isBold=true}}
-    {{#bulma-hero-header}}
-      <div class="container">
-        {{#bulma-nav}}
-          {{#bulma-nav-left}}
-            <h1 class="title nav-item">GithubFlow</h1>
-          {{/bulma-nav-left}}
-
-          {{#bulma-nav-center}}
-            {{!}}
-          {{/bulma-nav-center}}
-
-          {{#bulma-nav-toggle onmousedown=(action (toggle 'showToggleItems' this))}}
-            <span></span>
-            <span></span>
-            <span></span>
-          {{/bulma-nav-toggle}}
-
-          {{#bulma-nav-right isMenu=true}}
-
-          {{/bulma-nav-right}}
-        {{/bulma-nav}}
-      </div>
-    {{/bulma-hero-header}}
-  {{/bulma-hero}}
-
-  <section class="section">
-    <div class="container">
-      {{#each prompts as |prompt|}}
-        {{#if prompt.complete}}
-          <div class="columns">
-            <div class="column">
-              <div class="card is-fullwidth">
-                <header class="card-header">
-                  <p class="card-header-title">
-                    Run:
-                    {{md-text text=prompt.text}}
-                  </p>
-                </header>
-              </div>
-            </div>
-          </div>
-
-          <div class="columns">
-            <div class="column">
-              <div class="card is-fullwidth">
-                <header class="card-header">
-                  <p class="card-header-title">All Done?</p>
-                </header>
-                <footer class="card-footer">
-                  <a class="card-footer-item" {{action "restart"}}>Restart</a>
-                </footer>
-              </div>
-            </div>
-          </div>
-        {{else}}
-          <div class="columns">
-            <div class="column">
-              <div class="card is-fullwidth">
-                <header class="card-header">
-                  <p class="card-header-title">
-                    {{prompt.text}}
-                  </p>
-                </header>
-                <footer class="card-footer">
-                  {{#each prompt.answers as |answer|}}
-                    <a class="card-footer-item" {{action "getNextStep" answer}}>{{answer.text}}</a>
-                  {{/each}}
-                </footer>
-              </div>
-            </div>
-          </div>
-        {{/if}}
-      {{/each}}
-
-      {{#if thinking}}
-        <div class="columns">
-          <div class="column">
-            <article class="message is-info">
-              <div class="message-header">Thinking...</div>
-              <div class="message-body has-text-centered">
-                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-              </div>
-            </article>
-          </div>
+{{#each prompts as |prompt|}}
+  {{#if prompt.complete}}
+    <div class="columns">
+      <div class="column">
+        <div class="card is-fullwidth">
+          <header class="card-header">
+            <p class="card-header-title">
+              Run:
+              {{md-text text=prompt.text}}
+            </p>
+          </header>
         </div>
-      {{/if}}
+      </div>
     </div>
-  </section>
-</main>
+
+    <div class="columns">
+      <div class="column">
+        <div class="card is-fullwidth">
+          <header class="card-header">
+            <p class="card-header-title">All Done?</p>
+          </header>
+          <footer class="card-footer">
+            <a class="card-footer-item" {{action "restart"}}>Restart</a>
+          </footer>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="columns">
+      <div class="column">
+        <div class="card is-fullwidth">
+          <header class="card-header">
+            <p class="card-header-title">
+              {{prompt.text}}
+            </p>
+          </header>
+          <footer class="card-footer">
+            {{#each prompt.answers as |answer|}}
+              <a class="card-footer-item" {{action "getNextStep" answer}}>{{answer.text}}</a>
+            {{/each}}
+          </footer>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+{{/each}}
+
+{{#if thinking}}
+  <div class="columns">
+    <div class="column">
+      <article class="message is-info">
+        <div class="message-header">Thinking...</div>
+        <div class="message-body has-text-centered">
+          <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+        </div>
+      </article>
+    </div>
+  </div>
+{{/if}}
