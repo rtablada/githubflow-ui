@@ -1,15 +1,13 @@
 import Ember from 'ember';
-import config from 'githubflow/config/environment';
-import fetch from 'ember-network/fetch';
+import Chance from 'npm:chance';
+const chance = new Chance();
 
 export default Ember.Route.extend({
-  model() {
-    return fetch(`${config.DS.host}/${config.DS.namespace}/prompts/start`)
-      .then(raw => raw.json())
-      .then((data) => this.store.push(data));
-  },
-
-  setupController(controller, model) {
-    controller.set('prompts', [model]);
-  },
+  beforeModel() {
+    if (chance.bool()) {
+      this.transitionTo('csp');
+    } else {
+      this.transitionTo('fast');
+    }
+  }
 });

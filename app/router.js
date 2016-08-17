@@ -7,7 +7,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('fast');
+  this.route('csp', {path: 'a'});
+  this.route('fast', {path: 'b'});
 });
 
 export default Router;
