@@ -58,6 +58,7 @@
     "ember-truth-helpers": "1.2.0",
     "eslint-config-rtablada": "^3.0.0",
     "eslint-plugin-import": "^1.13.0",
+    "liquid-fire": "0.24.1",
     "loader.js": "^4.0.1"
   }
 }

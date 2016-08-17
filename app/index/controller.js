@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
     this.set('thinking', true);
     const [prompt] = yield Ember.RSVP.all([
       answer.get('to'),
-      timeout(1000),
+      timeout(400),
     ]);
 
     this.set('thinking', false);
