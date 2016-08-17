@@ -48,6 +48,7 @@
     "ember-export-application-global": "^1.0.5",
     "ember-font-awesome": "2.1.1",
     "ember-load-initializers": "^0.5.1",
+    "ember-metrics": "0.6.2",
     "ember-moment": "7.0.0-beta.3",
     "ember-network": "0.3.0",
     "ember-remarkable": "3.1.2",

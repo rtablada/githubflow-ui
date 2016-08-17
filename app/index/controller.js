@@ -2,6 +2,8 @@ import Ember from 'ember';
 import { task, timeout } from 'ember-concurrency';
 
 export default Ember.Controller.extend({
+  metrics: Ember.inject.service(),
+
   reset: task(function*() {
     const [first] = this.prompts;
     this.set('prompts', []);
@@ -25,10 +27,19 @@ export default Ember.Controller.extend({
 
   actions: {
     getNextStep(answer) {
+      answer.get('from').then((from) => {
+        this.get('metrics').trackEvent({
+          category: 'next',
+          action: 'click',
+          label: `${from.get('text')}:${answer.get('text')}`,
+        });
+      })
+
       this.get('answerQuestion').perform(answer);
     },
 
     restart() {
+      this.get('metrics').trackEvent({eventCategory: 'restart'});
       this.get('reset').perform();
     },
   },

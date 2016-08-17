@@ -2,6 +2,15 @@
 
 module.exports = function(environment) {
   var ENV = {
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['development', 'production'],
+        config: {
+          id: 'UA-35125724-3'
+        }
+      }
+    ],
     DS: {
       host: 'https://githubflow-decision-app.herokuapp.com',
       namespace: 'api',
