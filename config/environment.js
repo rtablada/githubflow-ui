@@ -2,7 +2,11 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'starter-project',
+    DS: {
+      host: 'https://githubflow-decision-app.herokuapp.com',
+      namespace: 'api',
+    },
+    modulePrefix: 'githubflow',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',

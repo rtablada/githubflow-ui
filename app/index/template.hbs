@@ -1,0 +1,36 @@
+<section class="section">
+  <div class="container">
+    {{#each prompts as |prompt|}}
+      {{#if prompt.complete}}
+        <div class="columns">
+          <div class="column">
+            <div class="card is-fullwidth">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Run: {{prompt.text}}
+                </p>
+              </header>
+            </div>
+          </div>
+        </div>
+      {{else}}
+        <div class="columns">
+          <div class="column">
+            <div class="card is-fullwidth">
+              <header class="card-header">
+                <p class="card-header-title">
+                  {{prompt.text}}
+                </p>
+              </header>
+              <footer class="card-footer">
+                {{#each prompt.answers as |answer|}}
+                  <a class="card-footer-item" {{action "getNextStep" answer}}>{{answer.text}}</a>
+                {{/each}}
+              </footer>
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    {{/each}}
+  </div>
+</section>
