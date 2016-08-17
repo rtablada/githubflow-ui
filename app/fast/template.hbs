@@ -1,0 +1,58 @@
+{{#each prompts as |prompt|}}
+  {{#if prompt.complete}}
+    <div class="columns">
+      <div class="column">
+        <div class="card is-fullwidth">
+          <header class="card-header">
+            <div class="card-header-title content">
+              {{md-text text=prompt.text}}
+            </div>
+          </header>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="card is-fullwidth">
+          <header class="card-header">
+            <p class="card-header-title">All Done?</p>
+          </header>
+          <footer class="card-footer">
+            <a class="card-footer-item" {{action "restart"}}>Restart</a>
+          </footer>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="columns">
+      <div class="column">
+        <div class="card is-fullwidth">
+          <header class="card-header">
+            <p class="card-header-title">
+              {{prompt.text}}
+            </p>
+          </header>
+          <footer class="card-footer">
+            {{#each prompt.answers as |answer|}}
+              <a class="card-footer-item" {{action "getNextStep" answer}}>{{answer.text}}</a>
+            {{/each}}
+          </footer>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+{{/each}}
+
+{{!-- {{#if thinking}}
+  <div class="columns">
+    <div class="column">
+      <article class="message is-info">
+        <div class="message-header">Thinking...</div>
+        <div class="message-body has-text-centered">
+          <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+        </div>
+      </article>
+    </div>
+  </div>
+{{/if}} --}}
