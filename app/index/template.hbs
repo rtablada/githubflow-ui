@@ -34,9 +34,23 @@
               <div class="card is-fullwidth">
                 <header class="card-header">
                   <p class="card-header-title">
-                    Run: {{md-text text=prompt.text}}
+                    Run:
+                    {{md-text text=prompt.text}}
                   </p>
                 </header>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns">
+            <div class="column">
+              <div class="card is-fullwidth">
+                <header class="card-header">
+                  <p class="card-header-title">All Done?</p>
+                </header>
+                <footer class="card-footer">
+                  <a class="card-footer-item" {{action "restart"}}>Restart</a>
+                </footer>
               </div>
             </div>
           </div>
