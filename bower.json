@@ -5,6 +5,8 @@
     "ember-cli-shims": "~0.1.1",
     "ember-qunit-notifications": "0.1.0",
     "font-awesome": "~4.5.0",
-    "bulma": "^0.0.26"
+    "bulma": "^0.0.26",
+    "remarkable": "^1.6.2",
+    "highlightjs": "^9.6.0"
   }
 }

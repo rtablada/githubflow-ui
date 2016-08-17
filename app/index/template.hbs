@@ -7,7 +7,7 @@
             <div class="card is-fullwidth">
               <header class="card-header">
                 <p class="card-header-title">
-                  Run: {{prompt.text}}
+                  Run: {{md-text text=prompt.text}}
                 </p>
               </header>
             </div>
@@ -32,5 +32,18 @@
         </div>
       {{/if}}
     {{/each}}
+
+    {{#if thinking}}
+      <div class="columns">
+        <div class="column">
+          <article class="message is-info">
+            <div class="message-header">Thinking...</div>
+            <div class="message-body has-text-centered">
+              <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+          </article>
+        </div>
+      </div>
+    {{/if}}
   </div>
 </section>
